@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const urlsingup = "http://localhost:3001/api/singup"
 const urlsingin = "http://localhost:3001/api/singin"
@@ -52,6 +53,7 @@ const Login = (props) => {
         setContainerActive(true);
     }
 
+    const navigate = useNavigate();
 
         return (
             <div className={`container1 ${containerActive ? "right-panel-active" : ""}`} id="container">
@@ -77,7 +79,7 @@ const Login = (props) => {
                     </form>
                 </div>
                 <div className="form-container sign-in-container">
-                    <form onSubmit={(e) => singin(e)}>
+                    <form onSubmit={(e) => {singin(e); navigate('/Chat')}}>
                       <h1>Iniciar Sesión</h1>
                       <div className="social-container">
                         <a href="#" className="social">
